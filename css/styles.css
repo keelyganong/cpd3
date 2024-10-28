@@ -1,36 +1,180 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    line-height: 1.5;
-    background-color: whitesmoke;
-    color: black;
-}
-/* creating nav bar */
-nav ul {
-    list-style-type:none;
-    padding: 0;
-    /* text-align: center; */
-    display: flex;
-    /* justify-content:center; */
-}
-/* select list item elements descendants of ul elements and in turn nav elements. */
-nav ul li {
-    display: relative;
-    margin: 0 10px;
-}
-/* select the link elements that are descendants of li and ul and nav elements. */
-nav ul li a {
-    text-decoration: none;
-    color: darkslategray;
-    padding:14px 20px;
-    display:block;
-}
+
+
 /* style navbar hover */
 nav ul a:hover{
-    background-color: darkgrey;
+  background-color: darkgrey;
 }
 
+/* summary atheletes to results */
+span.athlete:hover {
+  background-color:aliceblue
+}
+
+  /* Gallery layout for larger screens */
+  @media (min-width: 600px) {
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+  
+    .gallery img {
+      display: block;
+    }
+  }
+
+
+/* Adjusting body padding only when the sidebar is hovered */
+
+
+nav:hover ~ main,
+nav:hover ~ header
+nav:hover ~ footer {
+  padding-left: 200px; /* Adjust padding for the expanded sidebar */
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 768px) {
+  /* Ensuring the nav is expanded on larger screens */
+  nav {
+      width: 200px;
+  }
+
+
+  nav:hover ~ main,
+  nav:hover ~ header, 
+  nav:hover ~ footer {
+    padding-left: 200px;
+  }
+}
+
+
+
+/* reset */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.5;
+  background-color: whitesmoke;
+  color: black;
+  padding-left: 50px; /* Initial padding for the collapsed sidebar */
+  transition: padding-left 0.3s; /* Smooth transition */
+}
+
+header, footer, main {
+  padding: 20px;
+  /* text-align: center; */
+}
+
+/* Header styles */
+header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px 0;
+  text-align: center;
+  text-decoration: underline;
+  padding: 20px;
+}
+
+
+header h1 a:hover {
+  color: blue;
+}
+
+header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Sidebar styles */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50px; /* Initial collapsed width */
+  height: 100%;
+  background: #333;
+  overflow-y: auto;
+  transition: width 0.3s; /* Smooth transition */
+  z-index: 999; 
+}
+nav .hamburger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+nav ul {
+  padding: 0;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+}
+
+nav ul li {
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  width: 100%;
+  padding: 15px 20px;
+  color: white;
+}
+
+nav ul a:hover {
+  background-color: darkgrey;
+}
+
+nav:hover {
+  width: 200px; /* Expanded width */
+}
+
+nav:hover .hamburger {
+  display: none; /* Hide hamburger icon when expanded */
+}
+nav:hover ul {
+  display: flex; /* Show menu when expanded */
+}
+
+nav:hover ~ main,
+nav:hover ~ header,
+nav:hover ~ footer {
+  padding-left: 200px; /* Adjust padding for the expanded sidebar */
+}
+
+@media (min-width: 768px) {
+  nav {
+    width: 200px;
+  }
+  nav .hamburger {
+    display: none; /* Hide hamburger icon on larger screens */
+  }
+
+  nav ul {
+    display: flex; /* Always show the menu on larger screens */
+  }
+
+  body {
+    padding-left: 200px;
+  }
+
+  nav:hover ~ main,
+  nav:hover ~ header,
+  nav:hover ~ footer {
+    padding-left: 200px;
+  }
+}
+
+/* dropdown menu styles */
 /* Add position relative to .dropdown */
 .dropdown {
   position: relative;
@@ -39,17 +183,18 @@ nav ul a:hover{
 .dropdown-menu {
   display: none; 
   position: absolute; 
-  left: 0;
-  top: 100%;
+  left: 50%;
+  top: 0;
   background: #333; 
   z-index: 1000;
   padding: 0;
   margin:0;
   list-style:none;
+  min-width:200px;
 }
 
 .dropdown-menu li {
-  width: 200px;
+  width: 100px;
 }
 
 .dropdown-menu a {
@@ -65,275 +210,195 @@ nav ul a:hover{
   display: block; 
 }
 
-/* header {
-    text-align: center;
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 0;
-    border-radius: 15px;
-} */
-
-
-header h1 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    text-align: center;
-}
-  
-header h2 {
-    margin: 0;
-    font-size: 1.2rem;
-    text-align: center;
-}
-  
+/* Main and section styles */
 main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
 }
-/*style paragraph opener*/
+
+main section {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for better appearance */
+}
+
 .summary {
-    background: white;
-    outline-style: double;
-    padding: 16px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+  background: white;
+  outline-style: double;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
-h2{
+
+h2 {
   font-style: italic;
   text-align: center;
-  padding: 2px;
+  padding: 10px;
+  background: #f6f6f6;
+  border-radius: 4px;
+  margin-bottom: 20px;
 }
 
-/* style prs */
+/* Athlete and gallery styles */
 .athlete {
-    background: #e9ecef;
-    padding: 5px;
-    margin: 10px 2px;
-    border-radius: 8px;
-    text-align: center;
-}
+  background: #e9ecef;
+  padding: 3px;
+  margin: 10px 2px;
+  border-radius: 8px;
+  text-align: center;
   
-.athlete img {
-    width: 100%;
-    border-radius: 50%;
 }
-  
-.athlete figure {
-    text-align:center;
-}
-  
+
+
+
 .gallery img {
-    width: 100%;
-    margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 10px;
 }
-  
+
+@media (min-width: 600px) {
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+
+  .gallery img {
+    display: block;
+  }
+}
+
+/* Table styles */
 table {
-    width: 60%;
-    border-collapse: collapse;
-    margin: 20px auto;
-    margin-bottom: 20px;
+  width: 60%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  margin-bottom: 20px;
 }
-/* Sticky header */
+
 th {
   position: sticky;
   top: 0;
   overflow: hidden;
   background-color: lightgray;
+  z-index: 1;
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
 }
+
 /* Alternate row colors for readability */
 tr:nth-child(odd) {
-  background-color: #f9f9f9;
+  background-color: #e9f5fb;
 }
 /* hover effect for table rows */
-
-tr:hover{
-    background-color: lightgrey;
-}
-/* summary atheletes to results */
-.athlete:hover{
-  background-color:aliceblue
+tr:hover {
+  background-color: lightgrey;
 }
 
+@media (max-width: 600px) {
+  th, td {
+    font-size: 14px;
+  }
 
+  th, td:not(:nth-of-type(1)) {
+    display: block;
+    text-align: right;
+  }
 
+  th::before, td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
 
+  th {
+    border-bottom: none;
+  }
 
+  th[data-label], td[data-label] {
+    display: none;
+  }
 
-  
-  /* Scrollable table for smaller screens */
-  @media (max-width: 600px) {
-    th, td {
-      font-size: 14px;
-    }
-  
-    th, td:not(:nth-of-type(1)) {
-      display: block;
-      text-align: right;
-    }
-  
-    th::before, td::before {
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-    }
-  
-    th {
-      border-bottom: none;
-    }
-  
-    th[data-label], td[data-label] {
-      display: none;
-    }
-  
-    tbody tr {
-      margin-bottom: 20px;
-      display: block;
-    }
+  tbody tr {
+    margin-bottom: 20px;
+    display: block;
   }
-  /* making individual results flex */
-  #individual-results {
-    display: flex;
-    flex-direction: column;
-    gap:20px;  
-    align-items: start;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  .athlete figure {
-    /* display: flex; */
-    align-items: center;
-    background: #e9ecef;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
-    text-align: left;
-  }
-  .athlete img{
-    width:500px;
-    height:500px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  .athlete dl {
-    display: inline-block;
-    width: 100%;
-    text-align: left;
-  }
-  .athlete dl dt, .athlete dl dd {
-    position: relative;
-    display: inline-block;
-    width: 48%;
-    margin: 5px 0;
-    align-items: center;
-    text-align: center;
-    vertical-align: middle;
-  }
-  .athlete dl {
-    display: flex; /* Set to flex to control spacing */
-    gap: 10px; /* Adjusts horizontal space between dt and dd */
-    justify-content: flex-start; /* Keeps items aligned to the left */
-    align-items: center; /* Vertically aligns text to the center */
+}
+
+/* Individual results styles */
+#individual-results {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;  
+  align-items: start;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.athlete figure {
+  display: block;
+  align-items: center;
+
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 8px;
+  text-align: center;
+}
+.athlete dl {
+  display: grid;
+  grid-template-columns: auto 1fr; 
+  gap: 5px;
+  justify-content: flex-start; 
+  align-items: center; 
+  padding-bottom: 10px;
+}
+
+.athlete img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
 .athlete dl dt, .athlete dl dd {
-    margin: 0;
-    text-align: center;
+  margin: 1px 0;
+  margin-left:5px;
+  text-align: left;
+  padding: 5px;
 }
-  figcaption{
-    text-align:center;
+
+figcaption {
+  text-align: center;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+/* Animation styles */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  /* Gallery layout for larger screens */
-  @media (min-width: 600px) {
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px;
-    }
-  
-    .gallery img {
-      display: block;
-    }
+  to {
+    opacity: 1;
   }
-/* Darkmode */
-  /* body.dark-mode {
-    background-color: #121212;
-    color: white;
-  } */
-/*   
-  body.dark-mode nav ul li a {
-    color: #bbb;
-  }
-  
-  body.dark-mode header {
-    background-color: #333;
-  }
-  
-  body.dark-mode .summary, body.dark-mode .athlete {
-    background-color: #222;
-  }
-  
-  body.dark-mode th, body.dark-mode td {
-    border-color: #444;
-  }
-  
-  /* High contrast mode */
-  /* body.high-contrast {
-    background-color: black;
-    color: white;
-  }
-  
-  body.high-contrast nav ul li a {
-    color: yellow;
-  }
-  
-  body.high-contrast header {
-    background-color: black;
-  }
-  
-  body.high-contrast .summary, body.high-contrast .athlete {
-    background-color: black;
-  }
-  
-  body.high-contrast th, body.high-contrast td {
-    border-color: white;
-  }
-   */ 
-  /* Progress bar example for athlete progress */
-  /* .athlete dl dd {
-    position: relative;
-    display: flex;
-    align-items: center;
-  } */
-  
-  .progress-bar {
-    width: 100%;
-    height: 20px;
-    background: #ddd;
-    border-radius: 10px;
-    margin-left: 10px;
-    flex-grow: 1;
-  }
-  
-  .progress-bar div {
-    height: 100%;
-    background: #4caf50;
-    width: 0;
-    animation: loadProgress 2s forwards;
-  }
-  
-  @keyframes loadProgress {
-    to { width: 80%; }
-  }
-  footer{
-    text-align: center;
-    
-  }
+}
+
+.athlete img,
+.gallery img {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #f6f6f6;
+}
