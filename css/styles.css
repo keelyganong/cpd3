@@ -281,13 +281,11 @@ h2 {
 
 /* Table styles */
 table {
-  width: 60%;
+  width: 100%;
   border-collapse: collapse;
   margin: 20px auto;
   margin-bottom: 20px;
-  min-width: 600px;
-  /* overflow-x:auto; */
-  /* display:block; */
+  
   
 }
 
@@ -304,7 +302,6 @@ th, td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
-  /* white-space:nowrap; */
 }
 
 /* Alternate row colors for readability */
@@ -315,46 +312,32 @@ tr:nth-child(odd) {
 tr:hover {
   background-color: lightgrey;
 }
-
+/* layout for mobile */
 @media (max-width: 768px) {
-  /* table{
-    display:block;
-    overflow-x: auto;
-
-  } */
-  th, td {
-    font-size: 14px;
-    
-  }
-
-  th {
-    border: none; 
-    background-color: transparent;
-    /* position: relative; 
-    padding-left: 50px;  */
-  }
-
-  th::before, td::before {
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    
-  }
-
-  
-
-  th[data-label], td[data-label] {
-    display: none;
-  }
-
-  tbody tr {
-    margin-bottom: 20px;
+  table, tbody, tr, th, td {
     display: block;
+    width: 100%;
   }
-  /* tbody tr:hover {
-    background-color: unset;
-  } */
-}
+  td {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    position: relative;
+    text-align: left;
+  }
+  td::before {
+    content: attr(data-label); /* Displays data-label attribute */
+    font-weight: bold;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  td:first-of-type {
+    border-top: none;
+  }
+  tr:focus-within {
+    background-color: #14244b;
+  }
+
 
 /* Individual results styles */
 #individual-results {
