@@ -58,7 +58,7 @@ body {
   line-height: 1.5;
   background-color: whitesmoke;
   color: black;
-  padding-left: 50px; /* Initial padding for the collapsed sidebar */
+  padding-left: 50px; /* Initial padding for the collapsed  sidebar */
   transition: padding-left 0.3s; /* Smooth transition */
 }
 
