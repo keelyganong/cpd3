@@ -1,77 +1,20 @@
 
 
-a[href="#main"] {
-  position: absolute;
-  z-index: 999;
-  padding: 1em;
-  color: rgb(34, 34, 34);
-}
-
-/* style navbar hover */
-nav ul a:hover{
-  background-color: darkgrey;
-}
-
-/* summary atheletes to results */
-span.athlete:hover {
-  background-color:aliceblue
-}
-
-  /* Gallery layout for larger screens */
-  @media (min-width: 768px) {
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px;
-    }
-  
-    .gallery img {
-      display: block;
-    }
-  }
 
 
-/* Adjusting body padding only when the sidebar is hovered */
-
-
-nav:hover ~ main,
-nav:hover ~ header
-nav:hover ~ footer {
-  padding-left: 200px; /* Adjust padding for the expanded sidebar */
-}
-
-/* Responsive adjustments for larger screens */
-@media (min-width: 768px) {
-  /* Ensuring the nav is expanded on larger screens */
-  nav {
-      width: 200px;
-  }
-
-
-  nav:hover ~ main,
-  nav:hover ~ header, 
-  nav:hover ~ footer {
-    padding-left: 200px;
-  }
-}
-
-
-
-/* reset */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 20px;
   line-height: 1.5;
   background-color: whitesmoke;
-  color: black;
-  padding-left: 50px; /* Initial padding for the collapsed  sidebar */
-  transition: padding-left 0.3s; /* Smooth transition */
+  color: #212121;
+  transition: padding-color 0.3s; 
 }
 
 header, footer, main {
   padding: 20px;
-  /* text-align: center; */
+  
 }
 
 /* Header styles */
@@ -92,18 +35,33 @@ header h2 {
   margin: 0;
   font-size: 1.2rem;
   text-align: center;
+
 }
+
+a[href="#main"] {
+  position:absolute;
+  top: 20px;
+  right: 20px;
+  margin: auto;
+  z-index: 999;
+  background-color: #ffffff;
+  border: 1px solid #3399cc;
+  border-radius: 4px;
+  padding: 3px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 
 /* Sidebar styles */
 nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 50px; /* Initial collapsed width */
+  width: 50px; 
   height: 100%;
-  background: #333;
+  background: #3399cc;
   overflow-y: auto;
-  transition: width 0.3s; /* Smooth transition */
+  transition: width 0.3s; 
   z-index: 999; 
 }
 nav .hamburger {
@@ -138,8 +96,9 @@ nav ul li a {
 }
 
 nav ul a:hover {
-  background-color: darkgrey;
+  background-color: #14244b;
 }
+
 
 nav:hover {
   width: 200px; /* Expanded width */
@@ -192,7 +151,7 @@ nav:hover ~ footer {
   position: absolute; 
   left: 50%;
   top: 0;
-  background: #333; 
+  background: #14244b; 
   z-index: 1000;
   padding: 0;
   margin:0;
@@ -206,7 +165,7 @@ nav:hover ~ footer {
 
 .dropdown-menu a {
   padding: 10px;
-  background: #333;
+  background: #14244b;
   color: #fff;
   display:block;
 }
@@ -226,19 +185,32 @@ main {
 }
 
 main section {
-  background: white;
+  background: #ffffff;
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for better appearance */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+}
+main section:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .summary {
-  background: white;
+  background: #ffffff;
   outline-style: double;
   padding: 16px;
   border-radius: 8px;
   margin-bottom: 20px;
+}
+.summary:hover {
+  background-color: #f1f1f1;
+}
+
+span.athlete:hover {
+  background-color:aliceblue
 }
 
 h2 {
@@ -257,27 +229,15 @@ h2 {
   margin: 10px 2px;
   border-radius: 8px;
   text-align: center;
-  
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
 }
-
-
 
 .gallery img {
   width: 100%;
   margin-bottom: 10px;
 }
 
-@media (min-width: 768px) {
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-  }
-
-  .gallery img {
-    display: block;
-  }
-}
 
 /* Table styles */
 table {
@@ -285,8 +245,6 @@ table {
   border-collapse: collapse;
   margin: 20px auto;
   margin-bottom: 20px;
-  
-  
 }
 
 th {
@@ -312,31 +270,7 @@ tr:nth-child(odd) {
 tr:hover {
   background-color: lightgrey;
 }
-/* layout for mobile */
-@media (max-width: 768px) {
-  table, tbody, tr, th, td {
-    display: block;
-    width: 100%;
-  }
-  td {
-    padding: 10px;
-    border-top: 1px solid #ddd;
-    position: relative;
-    text-align: left;
-  }
-  td::before {
-    content: attr(data-label); /* Displays data-label attribute */
-    font-weight: bold;
-    width: 100%;
-    display: inline-block;
-    margin-bottom: 5px;
-  }
-  td:first-of-type {
-    border-top: none;
-  }
-  tr:focus-within {
-    background-color: #14244b;
-  }
+
 
 
 /* Individual results styles */
@@ -347,6 +281,7 @@ tr:hover {
   align-items: start;
   max-width: 80%;
   margin: 0 auto;
+  background-color: #e9f5fb;
 }
 
 .athlete figure {
@@ -387,6 +322,44 @@ figcaption {
   font-weight: bold;
 }
 
+/* layout for mobile */
+
+@media (max-width: 768px) {
+  table, tbody, tr, th, td {
+    display: block;
+    width: 100%;
+  }
+  td {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    position: relative;
+    text-align: left;
+  }
+  td::before {
+    content: attr(data-label); /* Displays data-label attribute */
+    font-weight: bold;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  td:first-of-type {
+    border-top: none;
+  }
+  tr:focus-within {
+    background-color: #14244b;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+
+  .gallery img {
+    display: block;
+  }
+  
+}
+
 /* Animation styles */
 @keyframes fadeIn {
   from {
@@ -401,6 +374,32 @@ figcaption {
 .gallery img {
   animation: fadeIn 1s ease-in-out;
 }
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Applying Animations */
+body {
+  animation: fadeIn 1s ease-in-out;
+}
+
+header, footer, main, section {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+.athlete, table {
+  animation: slideUp 0.7s ease-in-out;
+}
+
+
 
 /* Footer styles */
 footer {
