@@ -28,7 +28,7 @@ header h1 {
 
 
 header h1 a:hover {
-  color: blue;
+  color: #0056b3;
 }
 
 header h2 {
@@ -92,7 +92,7 @@ nav ul li a {
   display: block;
   width: 100%;
   padding: 15px 20px;
-  color: white;
+  color: black;
 }
 
 nav ul a:hover {
@@ -151,7 +151,7 @@ nav:hover ~ footer {
   position: absolute; 
   left: 50%;
   top: 0;
-  background: #14244b; 
+  background: white; 
   z-index: 1000;
   padding: 0;
   margin:0;
@@ -165,12 +165,12 @@ nav:hover ~ footer {
 
 .dropdown-menu a {
   padding: 10px;
-  background: #14244b;
-  color: #fff;
+  background: white;
+  color: black;
   display:block;
 }
 .dropdown-menu a:hover {
-  background: #111;
+  background: darkgrey;
 }
 .dropdown:hover .dropdown-menu {
   display: block; 
@@ -383,30 +383,115 @@ figcaption {
 }
 
 
+/* Animation styles */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
-  from { transform: translateY(10px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Applying Animations */
-body {
-  animation: fadeIn 1s ease-in-out;
-}
-
-header, footer, main, section {
-  animation: slideUp 0.5s ease-in-out;
-}
-
+body,
+header, footer, main, section,
 .athlete, table {
-  animation: slideUp 0.7s ease-in-out;
+  animation: fadeIn 1s ease-in-out, slideUp 0.5s ease-in-out;
 }
 
+/* Prefers-reduced-motion query */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 
+  a[href="#main"],
+  main section,
+  header h1,
+  header h2,
+  .athlete,
+  .athlete img,
+  figcaption,
+  table,
+  tr,
+  th,
+  td {
+    transition: none !important;
+  }
+}
+
+/* Prefers-color-scheme query */
+/* @media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  header h1,
+  header h2,
+  a[href="#main"],
+  main section,
+  summary,
+  .athlete,
+  table,
+  th,
+  td,
+  figcaption {
+    background-color: #212121;
+    color: #ffffff;
+    border-color: #424242;
+  }
+
+  a[href="#main"] {
+    background-color: #3399cc;
+    color: #ffffff;
+    border-color: #3399cc;
+  }
+
+  a[href="#main"]:hover {
+    background-color: #ffffff;
+    color: #3399cc;
+  }
+
+  th {
+    background-color: #424242;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #383838;
+  }
+
+  tr:hover {
+    background-color: #282828;
+  }
+
+  main section:hover {
+    background-color: #333333;
+  }
+
+  .athlete:hover {
+    background-color: #333333;
+  }
+
+  .athlete img:hover {
+    transform: scale(1.05);
+  }
+} */
 
 /* Footer styles */
 footer {
